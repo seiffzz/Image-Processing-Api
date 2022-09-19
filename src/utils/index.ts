@@ -12,7 +12,7 @@ const resizeImage = async (
     const imageName = imagePath.split('/').at(-1) as string
     const resizedImageName = `${imageName
       .split('.')
-      .at(0)}${width}x${height}.jpg`
+      .at(0)}_${width}x${height}.jpg`
     await sharp(imagePath)
       .resize({ width, height })
       .toFile(`${outputPath}/${resizedImageName}`)
