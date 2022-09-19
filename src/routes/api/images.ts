@@ -6,7 +6,7 @@ import { query, validationResult } from 'express-validator'
 const images_routes = Router()
 
 images_routes.get(
-  '/images',
+  '/images/resize',
   query('filename').isAlphanumeric(),
   query('width').isNumeric(),
   query('height').isNumeric(),

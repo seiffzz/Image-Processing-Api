@@ -45,25 +45,25 @@ describe('Testing the image existence functionality', () => {
 
 describe('Testing the API endpoint', () => {
   it('Not passing query params [filename, width, height]', async () => {
-    await request.get('/api/images').expect(400)
+    await request.get('/api/images/resize/').expect(400)
   })
   it('Passing non existing filename', async () => {
     await request
       .get(
-        `/api/images?filename=none&width=${config.width}&height=${config.height}`
+        `/api/images/resize/?filename=none&width=${config.width}&height=${config.height}`
       )
       .expect(404)
   })
   it('Passing all query params [filename, width, height]', async () => {
     await request
       .get(
-        `/api/images?filename=${config.filename}&width=${config.width}&height=${config.height}`
+        `/api/images/resize/?filename=${config.filename}&width=${config.width}&height=${config.height}`
       )
       .expect(200)
   })
   it('Passing non numeric width and/or height', async () => {
     await request
-      .get(`/api/images?filename=${config.filename}&width=s&height=s`)
+      .get(`/api/images/resize/?filename=${config.filename}&width=s&height=s`)
       .expect(400)
   })
 })
