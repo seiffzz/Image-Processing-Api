@@ -11,7 +11,9 @@ images_routes.get(
   query('width').isNumeric(),
   query('height').isNumeric(),
   async (req: Request, res: Response) => {
+    // check for validation error
     const errors = validationResult(req)
+
     if (!errors.isEmpty()) {
       return res.status(400).send({ errors: errors.array() })
     } else {
@@ -19,13 +21,17 @@ images_routes.get(
       const width = req.query.width as string
       const height = req.query.height as string
 
+      // check if the full image exists
       if (checkIfImageExists(`/assets/full/${fileName}.jpg`)) {
-        const resizedImageName = fileName + `${width}x${height}.jpg`
+        const resizedImageName = `${fileName}_${width}x${height}.jpg`
+
+        // check if the image is already cashed
         if (checkIfImageExists(`/assets/thumb/${resizedImageName}`)) {
           return res.sendFile(
             path.resolve('./') + `/assets/thumb/${resizedImageName}`
           )
         } else {
+          // resize image
           const resizedImageName = await resizeImage(
             path.resolve('./') + `/assets/full/${fileName}.jpg`,
             parseInt(width),

@@ -2,6 +2,27 @@ import sharp from 'sharp'
 import fs from 'fs'
 import path from 'path'
 
+/**
+ * @desc Resizes the passed image
+ * to the passed width and height
+ * and write the new image to the
+ * passed output directory.
+ *
+ * @param imagePath the path of the
+ * image to be resized.
+ *
+ * @param width the width of the new
+ * image.
+ *
+ * @param height the height of the new
+ * image
+ *
+ * @param outputPath the path for the
+ * new image to be saved at.
+ *
+ * @return string the new image name or error
+ * message
+ */
 const resizeImage = async (
   imagePath: string,
   width: number,
@@ -22,6 +43,15 @@ const resizeImage = async (
   }
 }
 
+/**
+ * @desc Checks if a file
+ * exist at the passed path or not.
+ *
+ * @param imagePath the path of the
+ * file that we want to check for.
+ *
+ * @return boolean true/false
+ */
 const checkIfImageExists = (imagePath: string): boolean => {
   return fs.existsSync(path.resolve('./') + imagePath)
 }
