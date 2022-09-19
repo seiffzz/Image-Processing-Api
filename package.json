@@ -1,0 +1,40 @@
+{
+  "name": "image-processing-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "lint": "eslint src/*.ts",
+    "lint:f": "eslint src/*.ts --fix",
+    "test": "tsc && jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seifalaa/Image-Processing-Api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seifalaa/Image-Processing-Api/issues"
+  },
+  "homepage": "https://github.com/seifalaa/Image-Processing-Api#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
